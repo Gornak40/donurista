@@ -4,6 +4,7 @@ from pyfiglet import Figlet
 import logging
 from chess import Board
 from unqlite import UnQLite
+from time import time
 
 
 class Info:
@@ -86,7 +87,7 @@ class Donurista:
 	def isready(self, inp):
 		print('readyok')
 
-	def is_cached(self):
+	def is_cached(self): # TODO: ARGS MODIFICATION
 		return False
 
 	def write_db(self, info, bestmove):
@@ -97,6 +98,7 @@ class Donurista:
 	def go(self, inp):
 		fen = self.board.fen()
 		db_depth = 0
+		T = time()
 		if fen in self.db:
 			db_depth, db_move = self.db[fen].decode('utf-8').split(';')
 			db_depth = int(db_depth)
@@ -104,6 +106,8 @@ class Donurista:
 				print('info smart cache moves')
 				print(f'bestmove {db_move}')
 				return
+		T = time() - T
+		logging.info(f'[+] db timing {T}')
 		self.br.write(inp)
 		br_pred = self.br.readfor(lambda x: 'bestmove' in x)
 		info = Info(br_pred[-2])
