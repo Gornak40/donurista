@@ -61,6 +61,10 @@ class Engine:
 class Donurista:
 	def __init__(self, brpath, dbpath):
 		self.br = Engine(brpath)
+		# fucking cute chess
+		self.br.write('setoption name Threads value 3')
+		self.br.write('setoption name Hash value 4096')
+		# fucking cute chess
 		self.db = UnQLite(dbpath)
 		self.board = Board()
 		self.func_book = {
@@ -123,6 +127,7 @@ class Donurista:
 		db_depth = 0
 		T = time()
 		if fen in self.db:
+			logging.info('[+] update db') # testing feature
 			db_depth, db_move = self.db[fen].decode('utf-8').split(';')
 			db_depth = int(db_depth)
 			if self.is_cached():
