@@ -83,7 +83,7 @@ class Donurista:
 	def simple(self, inp):
 		self.br.write(inp)
 
-	def uci(self, inp):
+	def uci(self, inp): # TODO: normal options
 		print('id name Donurista')
 		print('id author Gornak40')
 		print('uciok')
@@ -142,6 +142,7 @@ class Donurista:
 		bestmove = Info(br_pred[-1])
 		if info.depth > db_depth:
 			self.write_db(info, bestmove)
+		logging.info(f'[+] db size {len(self.db)}')
 		print(info)
 		print(bestmove)
 
