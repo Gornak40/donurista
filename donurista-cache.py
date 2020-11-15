@@ -180,5 +180,5 @@ class Donurista:
 if __name__ == '__main__':
 	logging.basicConfig(filename='donurista.log', level=logging.INFO)
 	logging.info('[+] ENGINE STARTED')
-	Donurista(brpath='/home/gornak40/chess/engines/CiChess_NNUE.sh',
+	Donurista(brpath='/home/gornak40/chess/engines/stockfish_20090216_x64_avx2',
 		dbpath='/home/gornak40/chess/engines/donurista.db')
