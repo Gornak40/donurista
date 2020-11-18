@@ -86,8 +86,7 @@ class Donurista:
 	def uci(self, inp): # TODO: normal options
 		print('id name Donurista')
 		print('id author Gornak40')
-		print('uciok')
-		print('option name Debug Log File type string default')
+		print('option name Debug Log File type string default') 
 		print('option name Contempt type spin default 24 min -100 max 100')
 		print('option name Analysis Contempt type combo default Both var Off var White var Black var Both')
 		print('option name Threads type spin default 1 min 1 max 512')
@@ -110,6 +109,7 @@ class Donurista:
 		print('option name SyzygyProbeLimit type spin default 7 min 0 max 7')
 		print('option name Use NNUE type check default true')
 		print('option name EvalFile type string default nn-82215d0fd0df.nnue')
+		print('uciok')
 
 	def isready(self, inp):
 		print('readyok')
