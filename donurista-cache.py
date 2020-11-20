@@ -117,13 +117,16 @@ class Donurista:
 	def is_cached(self): # TODO: ARGS MODIFICATION
 		return False
 
+	def make_new_fen(self):
+		return ' '.join(self.board.fen().split()[:-2])
+
 	def write_db(self, info, bestmove):
 		data = f'{info.depth};{bestmove.bestmove}'
 		with self.db.transaction():
-			self.db[self.board.fen()] = data
+			self.db[self.make_new_fen()] = data
 
 	def go(self, inp):
-		fen = self.board.fen()
+		fen = self.make_new_fen()
 		db_depth = 0
 		T = time()
 		if fen in self.db:
@@ -181,4 +184,4 @@ if __name__ == '__main__':
 	logging.basicConfig(filename='donurista.log', level=logging.INFO)
 	logging.info('[+] ENGINE STARTED')
 	Donurista(brpath='/home/gornak40/chess/engines/stockfish_20090216_x64_avx2',
-		dbpath='/home/gornak40/chess/engines/donurista.db')
+		dbpath='/home/gornak40/chess/engines/new.db')

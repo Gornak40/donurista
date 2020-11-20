@@ -15,7 +15,7 @@ def print_all():
 
 parser = ArgumentParser(description='Donurista quick DB viewer')
 parser.add_argument('--all', '-a', action='store_const', help='print all positions (long time)', const=True, default=False)
-db = UnQLite('donurista.db')
+db = UnQLite('new.db')
 args = parser.parse_args()
 if args.all:
 	print_all()
